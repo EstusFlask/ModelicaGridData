@@ -24,7 +24,7 @@ model SMIB_Base_Case
     R=0.0005,
     X=0.1000,
     G=0,
-    B=0) annotation (Placement(visible = true, transformation(extent = {{-10, -30}, {10, -10}}, rotation = 0)));
+    B=0) annotation (Placement(transformation(extent={{-6,-30},{14,-10}})));
   OpenIPSL.Electrical.Branches.PwLine line_01(
     R=0.001,
     X=0.2,
@@ -54,34 +54,42 @@ model SMIB_Base_Case
         extent={{-8,-8},{8,8}},
         rotation=0,
         origin={-14,-36})));
+  OpenIPSL.Electrical.Events.PwFault pwFault(
+    R=0.01,
+    X=0.1, t1 = inf, t2 = inf)                                  annotation (Placement(
+        transformation(
+        extent={{-6,-6},{6,6}},
+        rotation=270,
+        origin={34,-42})));
   inner OpenIPSL.Electrical.SystemBase SysData
     annotation (Placement(transformation(extent={{-84,44},{-46,56}})));
-  PF_Data.Power_Flow pf(redeclare record PowerFlow =
-        SMIB.PF_Data.PF_worst_00024)
+  PF_Data.Power_Flow pf(redeclare record PowerFlow = PF_Data.PF_00000)
     annotation (Placement(transformation(extent={{-34,40},{-14,60}})));
 equation
-  connect(gen01_1.pwPin, B01.p) annotation(
-    Line(points = {{-75, 0}, {-60, 0}}, color = {0, 0, 255}));
-  connect(gen02_1.pwPin, B02.p) annotation(
-    Line(points = {{77, 0}, {64, 0}}, color = {0, 0, 255}));
-  connect(B01.p, line_01.p) annotation(
-    Line(points = {{-60, 0}, {-49, 0}}, color = {0, 0, 255}));
-  connect(line_01.n, B03.p) annotation(
-    Line(points = {{-31, 0}, {-20, 0}}, color = {0, 0, 255}));
-  connect(line_02.n, B02.p) annotation(
-    Line(points = {{29, 20}, {52, 20}, {52, 0}, {64, 0}}, color = {0, 0, 255}));
-  connect(line_04.p, B04.p) annotation(
-    Line(points = {{29, -20}, {20, -20}}, color = {0, 0, 255}));
-  connect(line_03.n, B04.p) annotation(
-    Line(points = {{9, -20}, {20, -20}}, color = {0, 0, 255}));
-  connect(line_02.p, B03.p) annotation(
-    Line(points = {{11, 20}, {-14, 20}, {-14, 0}, {-20, 0}}, color = {0, 0, 255}));
-  connect(line_04.n, B02.p) annotation(
-    Line(points = {{47, -20}, {52, -20}, {52, 0}, {64, 0}}, color = {0, 0, 255}));
-  connect(line_03.p, B03.p) annotation(
-    Line(points = {{-9, -20}, {-14, -20}, {-14, 0}, {-20, 0}}, color = {0, 0, 255}));
-  connect(load.p, B03.p) annotation(
-    Line(points = {{-14, -28}, {-14, 0}, {-20, 0}}, color = {0, 0, 255}));
+  connect(gen01_1.pwPin, B01.p)
+    annotation (Line(points={{-75,0},{-60,0}}, color={0,0,255}));
+  connect(gen02_1.pwPin, B02.p)
+    annotation (Line(points={{77,0},{64,0}}, color={0,0,255}));
+  connect(B01.p, line_01.p)
+    annotation (Line(points={{-60,0},{-49,0}}, color={0,0,255}));
+  connect(line_01.n, B03.p)
+    annotation (Line(points={{-31,0},{-20,0}}, color={0,0,255}));
+  connect(line_02.n, B02.p)
+    annotation (Line(points={{29,20},{52,20},{52,0},{64,0}}, color={0,0,255}));
+  connect(line_04.p,B04. p)
+    annotation (Line(points={{29,-20},{20,-20}}, color={0,0,255}));
+  connect(line_03.n,B04. p)
+    annotation (Line(points={{13,-20},{20,-20}}, color={0,0,255}));
+  connect(line_02.p, B03.p) annotation (Line(points={{11,20},{-14,20},{-14,0},{
+          -20,0}}, color={0,0,255}));
+  connect(line_04.n, B02.p) annotation (Line(points={{47,-20},{52,-20},{52,0},{
+          64,0}}, color={0,0,255}));
+  connect(line_03.p, B03.p) annotation (Line(points={{-5,-20},{-14,-20},{-14,0},
+          {-20,0}}, color={0,0,255}));
+  connect(load.p, B03.p)
+    annotation (Line(points={{-14,-28},{-14,0},{-20,0}}, color={0,0,255}));
+  connect(pwFault.p,B04. p) annotation (Line(points={{34,-35},{34,-28},{24,-28},
+          {24,-20},{20,-20}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end SMIB_Base_Case;

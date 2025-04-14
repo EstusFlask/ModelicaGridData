@@ -3,8 +3,8 @@ record PF_Loads_load_00008
 extends SMIB.PF_Data.Loads_Data.Loads_Template(
 
 // Load: '4_1'
-PL1 = (47.6990891),
-QL1 = (9.5398178)
+PL1 = (50.0000000),
+QL1 = (10.0000000)
 
 );
 end PF_Loads_load_00008;

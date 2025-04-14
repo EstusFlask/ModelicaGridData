@@ -11,7 +11,7 @@ import timeit
 # Importing global constants and variables useful for the execution of the code
 from src import *
 
-LIST_OF_MODELS = ['AVRI', 'IEEE9', 'IEEE14', 'SMIB', 'TwoAreas']
+LIST_OF_MODELS = ['AVRI', 'IEEE9', 'SevenBus', 'SMIB', 'TwoAreas']
 
 parser = argparse.ArgumentParser()
 parser.add_argument("function", help = HELP_FUNCTION)

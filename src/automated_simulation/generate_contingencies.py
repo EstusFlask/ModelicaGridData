@@ -68,28 +68,14 @@ def generate_contingencies(lb, verbose = False):
         if verbose: print("{0:<16} {1:<12} {2:<12}".format(i+1, len(contingencies[i+1]), total_cont))
 
         # Computation of the probability of tripping i lines simultaneously
-        #prob.append(len(contingencies[i + 1]) * math.factorial(number_lines - i - 1) / math.factorial(number_lines))
-
-
-        if  i==0:
-            prob.append(1)
-        else:
-            # Computation of the probability of tripping i lines simultaneously
-            prob.append(0)
-
-        #prob.append(len(contingencies[i+1])*math.factorial(number_lines-i-1)/math.factorial(number_lines))
+        prob.append(len(contingencies[i+1])*math.factorial(number_lines-i-1)/math.factorial(number_lines))
 
     # Normalizing the probabilities to conform a discrete distribution function
     prob = np.array(prob)
     prob = prob / sum(prob)
 
-
     # Zipping the number of trippings and the corresponding probability in a tuple
     probabilities = list(zip(list(range(1, number_lines + 1)), prob))
-
-    print(f"Number of lines: {number_lines}")
-    print(f"Max contingencies: {n_contingencies}")
-    print(probabilities)
 
     if verbose:
         # Printing out the results

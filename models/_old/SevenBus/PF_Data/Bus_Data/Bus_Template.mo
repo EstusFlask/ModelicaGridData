@@ -22,4 +22,13 @@ parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg A6 "FVALDI" annotati
 parameter Modelica.SIunits.PerUnit V7 "(pu) FVERGE" annotation(Dialog(enable = false));
 parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg A7 "FVERGE" annotation(Dialog(enable = false));
 
+parameter Modelica.SIunits.PerUnit V8 "(pu) FSSVG" annotation(Dialog(enable = false));
+parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg A8 "FSSVG" annotation(Dialog(enable = false));
+
+parameter Modelica.SIunits.PerUnit V9 "(pu) FVALDIG" annotation(Dialog(enable = false));
+parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg A9 "FVALDIG" annotation(Dialog(enable = false));
+
+parameter Modelica.SIunits.PerUnit V10 "(pu) FVERGTG" annotation(Dialog(enable = false));
+parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg A10 "FVERGTG" annotation(Dialog(enable = false));
+
 end Bus_Template;

@@ -3,11 +3,11 @@ model SevenBus_Base_Case
   import SevenBus;
   SevenBus.Generators.G1 GEN1(
     M_b=1078,
+    P_0=pf.powerflow.machines.PG1,
+    Q_0=pf.powerflow.machines.QG1,
+    V_0=pf.powerflow.bus.V8,
     V_b=24,
-    V_0=PF_results.voltages.V21,
-    angle_0=PF_results.voltages.A21,
-    P_0=PF_results.machines.P21_1,
-    Q_0=PF_results.machines.Q21_1)
+    angle_0=pf.powerflow.bus.A8)
     annotation (Placement(transformation(extent={{-280,-110},{-260,-90}})));
   OpenIPSL.Electrical.Branches.PwLine pwLine(
     R=6e-006,
@@ -41,18 +41,18 @@ model SevenBus_Base_Case
     G=0,
     B=0) annotation (Placement(transformation(extent={{-30,-130},{-10,-110}})));
   OpenIPSL.Electrical.Loads.PSSE.Load load(
-    V_b=380,
-    V_0=PF_results.voltages.V5,
-    angle_0=PF_results.voltages.A5,
-    P_0=PF_results.loads.PL5_1,
-    Q_0=PF_results.loads.QL5_1)
+    
+    P_0=pf.powerflow.loads.PL4,
+    Q_0=pf.powerflow.loads.QL4,
+    V_0=pf.powerflow.bus.V5,V_b=380,
+    angle_0=pf.powerflow.bus.A5)
     annotation (Placement(transformation(extent={{-98,-146},{-88,-136}})));
   OpenIPSL.Electrical.Loads.PSSE.Load load1(
-    V_b=380,
-    V_0=PF_results.voltages.V3,
-    angle_0=PF_results.voltages.A3,
-    P_0=PF_results.loads.PL3_1,
-    Q_0=PF_results.loads.QL3_1)
+    
+    P_0=pf.powerflow.loads.PL2,
+    Q_0=pf.powerflow.loads.QL2,
+    V_0=pf.powerflow.bus.V3,V_b=380,
+    angle_0=pf.powerflow.bus.A3)
     annotation (Placement(transformation(extent={{60,-146},{70,-136}})));
   OpenIPSL.Electrical.Branches.PwLine pwLine6(
     R=6e-006,
@@ -65,50 +65,50 @@ model SevenBus_Base_Case
     G=0,
     B=0) annotation (Placement(transformation(extent={{-162,-58},{-142,-38}})));
   OpenIPSL.Electrical.Buses.BusExt FSSV(
-    np=4,
+    
+    V_0=pf.powerflow.bus.V2,
     V_b=380,
-    nn=1,
-    V_0=PF_results.voltages.V2,
-    angle_0=PF_results.voltages.A2)
+    angle_0=pf.powerflow.bus.A2,
+    nn=1,np=4)
     annotation (Placement(transformation(extent={{-200,-136},{-198,-62}})));
   OpenIPSL.Electrical.Buses.BusExt FTILL(
-    nn=2,
-    np=4,
+    
+    V_0=pf.powerflow.bus.V5,
     V_b=380,
-    V_0=PF_results.voltages.V5,
-    angle_0=PF_results.voltages.A5)
+    angle_0=pf.powerflow.bus.A5,nn=2,
+    np=4)
     annotation (Placement(transformation(extent={{-100,-130},{-98,-90}})));
   OpenIPSL.Electrical.Buses.BusExt FSBIS(
-    nn=2,
-    np=3,
+    
+    V_0=pf.powerflow.bus.V3,
     V_b=380,
-    V_0=PF_results.voltages.V3,
-    angle_0=PF_results.voltages.A3)
+    angle_0=pf.powerflow.bus.A3,nn=2,
+    np=3)
     annotation (Placement(transformation(extent={{58,-130},{60,-90}})));
   OpenIPSL.Electrical.Buses.BusExt FVERGE(
-    np=4,
+    
+    V_0=pf.powerflow.bus.V7,
     V_b=380,
-    nn=1,
-    V_0=PF_results.voltages.V7,
-    angle_0=PF_results.voltages.A7) annotation (Placement(transformation(
+    angle_0=pf.powerflow.bus.A7,
+    nn=1,np=4) annotation (Placement(transformation(
         extent={{-1,-39},{1,39}},
         rotation=-90,
         origin={1,123})));
   OpenIPSL.Electrical.Buses.BusExt FPAND(
-    np=4,
-    nn=2,
+    
+    V_0=pf.powerflow.bus.V1,
     V_b=380,
-    V_0=PF_results.voltages.V1,
-    angle_0=PF_results.voltages.A1) annotation (Placement(transformation(
+    angle_0=pf.powerflow.bus.A1,
+    nn=2,np=4) annotation (Placement(transformation(
         extent={{-1,-39},{1,39}},
         rotation=0,
         origin={-99,19})));
   OpenIPSL.Electrical.Buses.BusExt FTDPRA(
-    np=2,
-    nn=4,
+    
+    V_0=pf.powerflow.bus.V4,
     V_b=380,
-    V_0=PF_results.voltages.V4,
-    angle_0=PF_results.voltages.A4) annotation (Placement(transformation(
+    angle_0=pf.powerflow.bus.A4,
+    nn=4,np=2) annotation (Placement(transformation(
         extent={{-1,-39},{1,39}},
         rotation=0,
         origin={99,19})));
@@ -133,25 +133,25 @@ model SevenBus_Base_Case
     G=0,
     B=0) annotation (Placement(transformation(extent={{40,60},{60,80}})));
   OpenIPSL.Electrical.Loads.PSSE.Load load2(
-    V_b=380,
-    V_0=PF_results.voltages.V1,
-    angle_0=PF_results.voltages.A1,
-    P_0=PF_results.loads.PL1_1,
-    Q_0=PF_results.loads.QL1_1)
+    
+    P_0=pf.powerflow.loads.PL1,
+    Q_0=pf.powerflow.loads.QL1,
+    V_0=pf.powerflow.bus.V1,V_b=380,
+    angle_0=pf.powerflow.bus.A1)
     annotation (Placement(transformation(extent={{-96,-46},{-86,-36}})));
   OpenIPSL.Electrical.Loads.PSSE.Load load3(
-    V_b=380,
-    V_0=PF_results.voltages.V4,
-    angle_0=PF_results.voltages.A4,
-    P_0=PF_results.loads.PL4_1,
-    Q_0=PF_results.loads.QL4_1)
+    
+    P_0=pf.powerflow.loads.PL3,
+    Q_0=pf.powerflow.loads.QL3,
+    V_0=pf.powerflow.bus.V4,V_b=380,
+    angle_0=pf.powerflow.bus.A4)
     annotation (Placement(transformation(extent={{84,-46},{94,-36}})));
   OpenIPSL.Electrical.Buses.BusExt FVALDI(
-    nn=4,
+    
+    V_0=pf.powerflow.bus.V6,
     V_b=380,
-    np=1,
-    V_0=PF_results.voltages.V6,
-    angle_0=PF_results.voltages.A6)
+    angle_0=pf.powerflow.bus.A6,nn=4,
+    np=1)
     annotation (Placement(transformation(extent={{198,-136},{200,-62}})));
   OpenIPSL.Electrical.Branches.PwLine pwLine12(
     R=6e-006,
@@ -166,103 +166,104 @@ model SevenBus_Base_Case
   inner OpenIPSL.Electrical.SystemBase SysData
     annotation (Placement(transformation(extent={{-180,120},{-92,160}})));
   OpenIPSL.Electrical.Branches.PSSE.TwoWindingTransformer twoWindingTransformer(
-    G=0,
-    B=0,
-    R=0.00001,
-    X=0.00069,
-    CZ=1,
-    CW=1,
-    VNOM1=380,
-    VB1=380,
-    VNOM2=380,
-    VB2=380,
+    
     ANG1=0,
-    t1=PF_results.trafos.t1_1_4,
-    t2=PF_results.trafos.t2_1_4)
+    B=0,
+    CW=1,
+    CZ=1,G=0,
+    R=0.00001,
+    VB1=380,
+    VB2=380,
+    VNOM1=380,
+    VNOM2=380,
+    X=0.00069,
+    t1=1,
+    t2=1)
     annotation (Placement(transformation(extent={{-12,-8},{8,8}})));
   SevenBus.Generators.G2 GEN2(
-    V_b=20,
+    
     M_b=1710,
-    V_0=PF_results.voltages.V61,
-    angle_0=PF_results.voltages.A61,
-    P_0=PF_results.machines.P61_1,
-    Q_0=PF_results.machines.Q61_1)
+    P_0=pf.powerflow.machines.PG2,
+    Q_0=pf.powerflow.machines.QG2,
+    V_0=pf.powerflow.bus.V9,V_b=20,
+    angle_0=pf.powerflow.bus.A9)
     annotation (Placement(transformation(extent={{280,-110},{260,-90}})));
   SevenBus.Generators.G3 GEN3(
     M_b=1211,
+    P_0=pf.powerflow.machines.PG3,
+    Q_0=pf.powerflow.machines.QG3,
+    V_0=pf.powerflow.bus.V10,
     V_b=24,
-    V_0=PF_results.voltages.V71,
-    angle_0=PF_results.voltages.A71,
-    P_0=PF_results.machines.P71_1,
-    Q_0=PF_results.machines.Q71_1) annotation (Placement(transformation(
+    angle_0=pf.powerflow.bus.A10) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,190})));
   OpenIPSL.Electrical.Events.PwFault pwFault(
     R=0.1,
     X=0.1,
-    t1=1,
-    t2=1.2)
+    t1= Modelica.Constants.inf,
+    t2= Modelica.Constants.inf)
     annotation (Placement(transformation(extent={{-76,-148},{-64,-136}})));
   OpenIPSL.Electrical.Branches.PSSE.TwoWindingTransformer
     twoWindingTransformer1(
-    G=0,
+    
+    ANG1=0,
     B=0,
     CW=1,
-    VB2=380,
-    VB1=24,
-    ANG1=0,
-    CZ=2,
+    CZ=2,G=0,
     R=0.0025,
-    X=0.137,
-    VNOM1=24,
-    t2=415/380,
     S_n=1080,
-    t1=PF_results.trafos.t1_2_21,
-    VNOM2=PF_results.trafos.t2_2_21) annotation (Placement(transformation(
+    VB1=24,
+    VB2=380,
+    VNOM1=24,
+    VNOM2=1,
+    X=0.137,
+    t1=1,
+    t2=415/380) annotation (Placement(transformation(
         extent={{6,-4},{-6,4}},
         rotation=180,
         origin={-230,-100})));
   OpenIPSL.Electrical.Branches.PSSE.TwoWindingTransformer
     twoWindingTransformer2(
-    G=0,
+    
+    ANG1=0,
     B=0,
     CW=1,
-    VB2=380,
-    VB1=20,
-    VNOM2=405,
-    CZ=2,
+    CZ=2,G=0,
     R=0.0029,
-    X=0.1583,
-    VNOM1=20,
     S_n=1710,
-    ANG1=0,
-    t1=PF_results.trafos.t1_6_61,
-    t2=PF_results.trafos.t2_6_61) annotation (Placement(transformation(
+    VB1=20,
+    VB2=380,
+    VNOM1=20,
+    VNOM2=405,
+    X=0.1583,
+    t1=1,
+    t2=1) annotation (Placement(transformation(
         extent={{-6,-4},{6,4}},
         rotation=180,
         origin={230,-100})));
   OpenIPSL.Electrical.Branches.PSSE.TwoWindingTransformer
     twoWindingTransformer3(
-    G=0,
+    
+    ANG1=0,
     B=0,
     CW=1,
-    VB2=380,
-    VB1=24,
-    VNOM2=415,
-    CZ=2,
+    CZ=2,G=0,
     R=0.0025,
-    X=0.1362,
-    VNOM1=24,
     S_n=1080,
-    ANG1=0,
-    t1=PF_results.trafos.t1_7_71,
-    t2=PF_results.trafos.t2_7_71) annotation (Placement(transformation(
+    VB1=24,
+    VB2=380,
+    VNOM1=24,
+    VNOM2=415,
+    X=0.1362,
+    t1=1,
+    t2=1) annotation (Placement(transformation(
         extent={{6,-4},{-6,4}},
         rotation=90,
         origin={0,150})));
-  PF_Data.PF_results PF_results annotation(
-    Placement(visible = true, transformation(origin = {-244, 152}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SevenBus.PF_Data.Power_Flow pf(redeclare record PowerFlow =
+        SevenBus.PF_Data.PF_best_00005); annotation(
+    Placement(visible = true, transformation(origin = {-250, 150}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(pwLine.n, FTILL.n[1]) annotation (Line(points={{-145,-100},{-100,-100},
           {-100,-116}}, color={0,0,255}));
