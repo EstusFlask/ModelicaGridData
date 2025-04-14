@@ -28,6 +28,29 @@ def copytree(src, dst, symlinks=False, ignore=None):
         else:
             shutil.copy2(s, d)
 
+
+def save_labels(working_directory, model_package, labels_init, labels_final):
+    """
+    将初始和最终的场景标签保存为 CSV 文件。
+
+    参数:
+        working_directory (str): 工作目录路径
+        model_package (str): 模型包名称
+        labels_init (dict): 初始标签字典
+        labels_final (dict): 最终标签字典
+    """
+    sc_keys = labels_final.keys()
+
+    # 保存初始标签
+    sc_label_df_init = pd.DataFrame(index=sc_keys, columns=["Label"])
+    sc_label_df_init["Label"] = [labels_init[k] for k in sc_keys]
+    sc_label_df_init.to_csv(os.path.join(working_directory, f"{model_package}_labels_init.csv"))
+
+    # 保存最终标签
+    sc_label_df_final = pd.DataFrame(index=sc_keys, columns=["Label"])
+    sc_label_df_final["Label"] = [labels_final[k] for k in sc_keys]
+    sc_label_df_final.to_csv(os.path.join(working_directory, f"{model_package}_labels_final.csv"))
+
 def om_simulation(pf_list, scenarios, sim_params, n_proc):
     '''
     OM_SIMULATION
@@ -101,9 +124,6 @@ def om_simulation(pf_list, scenarios, sim_params, n_proc):
     _temp_dir = os.path.join(os.getcwd(), "_temp", f"{n_proc}", _model_package)
     if not os.path.exists(_temp_dir):
         os.makedirs(_temp_dir)
-    else:
-        shutil.rmtree(_temp_dir) # removing existing temporal directory
-        os.makedirs(_temp_dir) # creating an empty new temporal directory
     # Copying model
     copytree(_mo_model_folder, os.path.join(_temp_dir))
 
@@ -161,7 +181,6 @@ def om_simulation(pf_list, scenarios, sim_params, n_proc):
 
     counter = 1
     counter_pf = 1
-    _exit_loop = False
 
     for pf in pf_list:
         # Getting power flow name and identifier via regex
@@ -266,7 +285,21 @@ def om_simulation(pf_list, scenarios, sim_params, n_proc):
             _simSettings = f"startTime={_startTime},stopTime={_stopTime}" \
                 + f",tolerance={_tolerance},method=\"{_method}\",numberOfIntervals={_numberOfIntervals}"
             _simOptions = _simSettings + f",fileNamePrefix=\"{_model_package}_dslin_final_{counter}\""
+            '''
+            # 获取状态变量导数
+            state_derivatives = omc.sendExpression("getContinuousStateDerivatives()")
+            derivatives = np.array([float(x) for x in state_derivatives.split(',')])
 
+            # 计算导数范数（L2范数）
+            norm_deriv = np.linalg.norm(derivatives)
+            threshold = 1e-6  # 根据系统特性调整阈值
+
+            # 检测平衡点条件
+            if norm_deriv > threshold:
+                print(f"警告：当前工作点偏离平衡点（导数范数={norm_deriv}），可能导致线性化模型不准确！")
+            else:
+                print("当前工作点处于平衡点附近，允许执行线性化。")
+            '''
             res = omc.sendExpression(f"linearize({_model_package}.{_model_name},{_simOptions},simflags=\"-overrideFile=open_line.txt\")")
 
             # Path of the model containing the linearization result
@@ -293,13 +326,26 @@ def om_simulation(pf_list, scenarios, sim_params, n_proc):
             # Evaluating system small-signal stability using eigenvalues
             sc_labels_final[counter] = label_scenario(A)
             counter += 1
+            if counter % 10 == 0:
+                save_labels(_working_directory, _model_package, sc_labels_init, sc_labels_final)
+            if counter % 21==0:
+                for file_object in os.listdir(_working_directory):
+                    file_object_path = os.path.join(_working_directory, file_object)
+                    if file_object_path.endswith((".mat", ".npy", ".mo", ".csv", "trip_line.txt", "open_line.txt")):
+                        continue
+                    else:
+                        try:
+                            if os.path.isfile(file_object_path) or os.path.islink(file_object_path):
+                                os.unlink(file_object_path)
+                            else:
+                                shutil.rmtree(file_object_path)
+                        except Exception as e:
+                            print(f"Error deleting {file_object_path}: {e}")  # 打印异常信息
 
             # Breaking if the number of simulations is larger than the max number
-            if counter > _max_simulations:
-                _exit_loop = True
+            if counter >= _max_simulations:
                 break
 
-        if _exit_loop: break
         counter_pf +=1
 
     # Closing OM process
@@ -309,7 +355,7 @@ def om_simulation(pf_list, scenarios, sim_params, n_proc):
 
     for file_object in os.listdir(_working_directory):
         file_object_path = os.path.join(_working_directory, file_object)
-        if file_object_path.endswith(".mat") or file_object_path.endswith(".npy") or file_object_path.endswith(".mo"):
+        if file_object_path.endswith((".mat", ".npy", ".mo", ".csv")):
             continue
         else:
             if os.path.isfile(file_object_path) or os.path.islink(file_object_path):
@@ -318,14 +364,5 @@ def om_simulation(pf_list, scenarios, sim_params, n_proc):
                 shutil.rmtree(file_object_path)
 
     # Saving labels of each scenario
-    sc_keys = sc_labels_final.keys()
 
-    sc_label_df_init = pd.DataFrame(index = sc_keys, columns = ["Label"])
-    sc_label_df_init["Label"] = [sc_labels_init[x] for x in sc_keys]
-    sc_label_df_init.to_csv(os.path.join(_working_directory, f"{_model_package}_labels_init.csv"))
-
-    sc_label_df_final = pd.DataFrame(index = sc_keys, columns = ["Label"])
-    sc_label_df_final["Label"] = [sc_labels_final[x] for x in sc_keys]
-    sc_label_df_final.to_csv(os.path.join(_working_directory, f"{_model_package}_labels_final.csv"))
-
-    shutil.rmtree(_temp_dir) # removing existing temporal directory
+    save_labels(_working_directory, _model_package, sc_labels_init, sc_labels_final)
