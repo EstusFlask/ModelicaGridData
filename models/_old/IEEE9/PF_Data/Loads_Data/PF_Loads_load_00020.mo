@@ -1,17 +1,18 @@
 within IEEE9.PF_Data.Loads_Data;
 record PF_Loads_load_00020
 extends IEEE9.PF_Data.Loads_Data.Loads_Template(
-PL1 = (121.2768707),
-QL1 = (48.5107498),
-PL2 = (87.8469391),
-QL2 = (29.2823143),
-PL3 = (98.3707657),
-QL3 = (34.4297676));
 
 // Load: '5_1'
+PL1 = (370.2460632),
+QL1 = (148.0984344),
 
 // Load: '6_1'
+PL2 = (261.2326965),
+QL2 = (87.0775681),
 
 // Load: '8_1'
+PL3 = (285.6616821),
+QL3 = (99.9815903)
 
+);
 end PF_Loads_load_00020;

@@ -1,0 +1,46 @@
+within SevenBus.PF_Data.Bus_Data;
+record PF_Bus_load_00226
+extends SevenBus.PF_Data.Bus_Data.Bus_Template(
+
+// Bus: 'FPAND' (PQ bus)
+V1 = 1.1997804,
+A1 = 1.6568740,
+
+// Bus: 'FSSV' (PQ bus)
+V2 = 1.2001109,
+A2 = 1.7250864,
+
+// Bus: 'FSBIS' (PQ bus)
+V3 = 1.2001628,
+A3 = 1.6572390,
+
+// Bus: 'FTDPRA' (PQ bus)
+V4 = 1.1998111,
+A4 = 1.6343500,
+
+// Bus: 'FTILL' (PQ bus)
+V5 = 1.2001248,
+A5 = 1.6612079,
+
+// Bus: 'FVALDI' (PQ bus)
+V6 = 1.2002110,
+A6 = 1.6787471,
+
+// Bus: 'FVERGE' (PQ bus)
+V7 = 1.1994462,
+A7 = 1.6272156,
+
+// Bus: 'FSSVG' (PV bus)
+V8 = 1.0238748,
+A8 = 7.4041354,
+
+// Bus: 'FVALDIG' (PV bus)
+V9 = 1.0696000,
+A9 = 3.6512580,
+
+// Bus: 'FVERGTG' (slack bus)
+V10 = 0.9803000,
+A10 = 0.0000000
+
+);
+end PF_Bus_load_00226;

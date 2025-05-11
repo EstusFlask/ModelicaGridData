@@ -1,0 +1,62 @@
+within IEEE14.PF_Data.Bus_Data;
+record PF_Bus_worst_00540
+extends IEEE14.PF_Data.Bus_Data.Bus_Template(
+
+// Bus: 'BUS1' (slack bus)
+V1 = 1.0300000,
+A1 = 0.0000000,
+
+// Bus: 'BUS2' (PV bus)
+V2 = 1.0300000,
+A2 = -5.7541669,
+
+// Bus: 'BUS3' (PV bus)
+V3 = 1.0100000,
+A3 = -9.0590211,
+
+// Bus: 'BUS4' (PQ bus)
+V4 = 0.9876623,
+A4 = -10.8941157,
+
+// Bus: 'BUS5' (PQ bus)
+V5 = 0.9941148,
+A5 = -10.0045391,
+
+// Bus: 'BUS6' (PV bus)
+V6 = 1.0300000,
+A6 = -20.9923772,
+
+// Bus: 'BUS7' (PQ bus)
+V7 = 0.9915124,
+A7 = -15.2724981,
+
+// Bus: 'BUS8' (PV bus)
+V8 = 1.0300000,
+A8 = -11.8114942,
+
+// Bus: 'BUS9' (PQ bus)
+V9 = 0.9753549,
+A9 = -19.8887768,
+
+// Bus: 'BUS10' (PQ bus)
+V10 = 0.9613098,
+A10 = -21.0759249,
+
+// Bus: 'BUS11' (PQ bus)
+V11 = 0.9839525,
+A11 = -21.4837454,
+
+// Bus: 'BUS12' (PQ bus)
+V12 = 1.0054498,
+A12 = -22.4024057,
+
+// Bus: 'BUS13' (PQ bus)
+V13 = 0.9884440,
+A13 = -22.7739321,
+
+// Bus: 'BUS14' (PQ bus)
+V14 = 0.9093162,
+A14 = -26.8717531
+
+);
+end PF_Bus_worst_00540;

@@ -1,0 +1,22 @@
+within SMIB.PF_Data.Bus_Data;
+record PF_Bus_worst_00499
+extends SMIB.PF_Data.Bus_Data.Bus_Template(
+
+// Bus: 'B01' (PV bus)
+V1 = 1.0000000,
+A1 = 4.8829357,
+
+// Bus: 'B02' (slack bus)
+V2 = 1.0000000,
+A2 = 0.0000000,
+
+// Bus: 'B03' (PQ bus)
+V3 = 0.9970242,
+A3 = 0.1342975,
+
+// Bus: 'B04' (PQ bus)
+V4 = 0.9940540,
+A4 = 0.2693984
+
+);
+end PF_Bus_worst_00499;

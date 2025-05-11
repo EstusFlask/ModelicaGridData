@@ -56,14 +56,15 @@ model SMIB_Base_Case
         origin={-14,-36})));
   OpenIPSL.Electrical.Events.PwFault pwFault(
     R=0.01,
-    X=0.1, t1 = inf, t2 = inf)                                  annotation (Placement(
+    X=0.1, t1 = Modelica.Constants.inf, t2 = Modelica.Constants.inf)                                  annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
         rotation=270,
         origin={34,-42})));
   inner OpenIPSL.Electrical.SystemBase SysData
     annotation (Placement(transformation(extent={{-84,44},{-46,56}})));
-  PF_Data.Power_Flow pf(redeclare record PowerFlow = PF_Data.PF_00000)
+  PF_Data.Power_Flow pf(redeclare record PowerFlow =
+        SMIB.PF_Data.PF_best_00271)
     annotation (Placement(transformation(extent={{-34,40},{-14,60}})));
 equation
   connect(gen01_1.pwPin, B01.p)
@@ -93,3 +94,4 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end SMIB_Base_Case;
+

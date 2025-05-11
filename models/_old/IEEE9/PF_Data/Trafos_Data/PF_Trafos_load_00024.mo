@@ -1,20 +1,21 @@
 within IEEE9.PF_Data.Trafos_Data;
 record PF_Trafos_load_00024
 extends IEEE9.PF_Data.Trafos_Data.Trafos_Template(
+
+// TRAFO: '['1_BUS1_16.5_4_BUS4_230.0_T1']'
+// From: 'BUS1' - To: 'BUS4'
 t1_trafo_1 = 1.0000000,
 t2_trafo_1 = 1.0000000,
+
+// TRAFO: '['2_BUS2_18.0_7_BUS7_230.0_T2']'
+// From: 'BUS2' - To: 'BUS7'
 t1_trafo_2 = 1.0000000,
 t2_trafo_2 = 1.0000000,
-t1_trafo_3 = 1.0000000,
-t2_trafo_3 = 1.0000000);
 
-// TRAFO: '['1_4_T1']'
-// From: 'BUS1' - To: 'BUS4'
-
-// TRAFO: '['2_7_T2']'
-// From: 'BUS2' - To: 'BUS7'
-
-// TRAFO: '['9_3_T3']'
+// TRAFO: '['9_BUS9_230.0_3_BUS3_13.8_T3']'
 // From: 'BUS9' - To: 'BUS3'
+t1_trafo_3 = 1.0000000,
+t2_trafo_3 = 1.0000000
 
+);
 end PF_Trafos_load_00024;

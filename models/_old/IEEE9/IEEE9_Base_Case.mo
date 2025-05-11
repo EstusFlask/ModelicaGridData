@@ -148,7 +148,7 @@ model IEEE9_Base_Case
         extent={{-7,-7},{7,7}},
         rotation=270,
         origin={57,61})));
-  OpenIPSL.Electrical.Branches.PwLine pwLine2Openings(
+  OpenIPSL.Electrical.Branches.PwLine pwLine_7_8(
     R=0.0085000,
     X=0.072000,
     G=0.000000,
@@ -232,21 +232,21 @@ model IEEE9_Base_Case
     Q_0=pf.powerflow.loads.QL2)
     annotation (Placement(transformation(extent={{98,-20},{110,-10}})));
   IEEE9.PF_Data.Power_Flow pf(redeclare record PowerFlow =
-        IEEE9.PF_Data.PF_worst_00005)
+        IEEE9.PF_Data.PF_worst_00024)
     annotation (Placement(transformation(extent={{-160,112},{-140,132}})));
 equation
   connect(pSSEGen1_1.pwPin, B2.p)
     annotation (Line(points={{-139,90},{-122,90}}, color={0,0,255}));
   connect(twoWindingTransformer3.p, B2.p)
     annotation (Line(points={{-107,90},{-122,90}}, color={0,0,255}));
-  connect(B7.p, pwLine2Openings.p)
-    annotation (Line(points={{-72,90},{-49.1,90}}, color={0,0,255}));
+  connect(B7.p, pwLine_7_8.p) annotation(
+    Line(points = {{-72, 90}, {-49.1, 90}}, color = {0, 0, 255}));
   connect(twoWindingTransformer3.n, B7.p)
     annotation (Line(points={{-93,90},{-72,90}}, color={0,0,255}));
   connect(line_5_7.n, B7.p) annotation (Line(points={{-74,53.1},{-74,72},{-62,72},
           {-62,90},{-72,90}}, color={0,0,255}));
-  connect(pwLine2Openings.n, B8.p)
-    annotation (Line(points={{-32.9,90},{0,90}}, color={0,0,255}));
+  connect(pwLine_7_8.n, B8.p) annotation(
+    Line(points = {{-32.9, 90}, {0, 90}}, color = {0, 0, 255}));
   connect(load_B8.p, B8.p)
     annotation (Line(points={{-12,70},{-12,90},{0,90}}, color={0,0,255}));
   connect(line_8_9.n, B8.p)

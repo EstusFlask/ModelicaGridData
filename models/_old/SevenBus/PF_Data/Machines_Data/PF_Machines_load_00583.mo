@@ -1,0 +1,21 @@
+within SevenBus.PF_Data.Machines_Data;
+record PF_Machines_load_00583
+extends SevenBus.PF_Data.Machines_Data.Machines_Template(
+
+// MACHINE: '21_1'
+// Bus: FSSVG'
+PG1 = (962.2000000),
+QG1 = (200.0000001),
+
+// MACHINE: '61_1'
+// Bus: FVALDIG'
+PG2 = (480.4280000),
+QG2 = (171.2479086),
+
+// MACHINE: '71_1'
+// Bus: FVERGTG'
+PG3 = (-464.3065367),
+QG3 = (-214.1898701)
+
+);
+end PF_Machines_load_00583;

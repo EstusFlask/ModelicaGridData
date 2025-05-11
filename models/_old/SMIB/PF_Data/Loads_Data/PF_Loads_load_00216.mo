@@ -1,0 +1,10 @@
+within SMIB.PF_Data.Loads_Data;
+record PF_Loads_load_00216
+extends SMIB.PF_Data.Loads_Data.Loads_Template(
+
+// Load: '4_1'
+PL1 = (35.6578293),
+QL1 = (7.1315660)
+
+);
+end PF_Loads_load_00216;

@@ -3,8 +3,8 @@ record PF_Loads_worst_00013
 extends SMIB.PF_Data.Loads_Data.Loads_Template(
 
 // Load: '4_1'
-PL1 = (39.3765907),
-QL1 = (7.8753181)
+PL1 = (44.3415642),
+QL1 = (8.8683128)
 
 );
 end PF_Loads_worst_00013;

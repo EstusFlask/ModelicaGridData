@@ -1,0 +1,22 @@
+within SevenBus.PF_Data.Loads_Data;
+record PF_Loads_best_00039
+extends SevenBus.PF_Data.Loads_Data.Loads_Template(
+
+// Load: '1_1'
+PL1 = (196.0947876),
+QL1 = (1.9609479),
+
+// Load: '3_1'
+PL2 = (179.1387634),
+QL2 = (1.7913877),
+
+// Load: '4_1'
+PL3 = (376.8358459),
+QL3 = (3.7683585),
+
+// Load: '5_1'
+PL4 = (439.8883667),
+QL4 = (4.3988838)
+
+);
+end PF_Loads_best_00039;

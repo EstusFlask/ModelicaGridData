@@ -1,0 +1,16 @@
+within SMIB.PF_Data.Machines_Data;
+record PF_Machines_best_00081
+extends SMIB.PF_Data.Machines_Data.Machines_Template(
+
+// MACHINE: '1_1'
+// Bus: B01'
+PG1 = (40.0000000),
+QG1 = (4.6260453),
+
+// MACHINE: '2_1'
+// Bus: B02'
+PG2 = (-1.1003750),
+QG2 = (6.4360280)
+
+);
+end PF_Machines_best_00081;

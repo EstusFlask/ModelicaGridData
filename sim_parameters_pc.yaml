@@ -30,8 +30,8 @@ openipsl_path_windows_new: 'E:\coding\OpenIPSL-2.0.0\OpenIPSL\package.mo' # vers
 # == SIMULATION PARAMETERS ==
 # ===========================
 startTime: 0.0
-stopTime: 4.0
-numberOfIntervals: 500
+stopTime: 1.0
+numberOfIntervals: 100
 method: 'dassl'
 tolerance: 0.0001 # do not pass in scientific format! (1e-7) will generate an error
 fixedstepsize: 0.001 # for fixed step solver

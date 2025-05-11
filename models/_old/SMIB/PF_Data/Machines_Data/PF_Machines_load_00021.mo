@@ -5,12 +5,12 @@ extends SMIB.PF_Data.Machines_Data.Machines_Template(
 // MACHINE: '1_1'
 // Bus: B01'
 PG1 = (40.0000000),
-QG1 = (5.3430328),
+QG1 = (5.1730810),
 
 // MACHINE: '2_1'
 // Bus: B02'
-PG2 = (9.0183004),
-QG2 = (7.8553677)
+PG2 = (6.6590519),
+QG2 = (7.5096340)
 
 );
 end PF_Machines_load_00021;

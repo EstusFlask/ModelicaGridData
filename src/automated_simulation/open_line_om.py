@@ -32,7 +32,7 @@ def open_line_om(scenario, simulation_time, line_reclosing_time, working_directo
     # Just one line opening
     if len(scenario) ==  1:
         line = scenario[0]
-        t_initial = simulation_time/2
+        t_initial = 10
         t_final = t_initial + line_reclosing_time
         file.write(f"{line}.t1={t_initial:.3f}\n")
         file.write(f"{line}.t2={t_final:.3f}\n")

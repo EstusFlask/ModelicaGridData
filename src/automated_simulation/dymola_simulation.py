@@ -164,7 +164,6 @@ def dymola_simulation(pf_list, scenarios, sim_params, n_proc):
 
     counter = 1
     counter_pf = 1
-    _exit_loop = False
 
     for pf in pf_list:
 
@@ -273,13 +272,11 @@ def dymola_simulation(pf_list, scenarios, sim_params, n_proc):
             counter += 1
 
             # Breaking if the number of simulation is larger than the max number
-            if counter > _max_simulations:
-                _exit_loop = True
+            if counter >= _max_simulations:
                 break
 
         # Closing Dymola active model
         dymolaInstance.ExecuteCommand("closeModel()")
-        if _exit_loop: break
         counter_pf += 1
 
     # Closing dymola instance

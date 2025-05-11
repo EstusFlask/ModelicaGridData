@@ -368,7 +368,7 @@ def extract_data(tool, model, version, path, working_directory, mu, sigma):
                     elif extract == 'generators':
 
                         # Generator to extract data from has been previously selected
-                        n_gen = 0 # for developing only
+                        #n_gen = 0 # for developing only
                         # Machine name
                         _gen_name = _generators[n_gen]
 

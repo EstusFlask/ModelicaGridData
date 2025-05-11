@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import sdf
 import os
 
+import time
+
 import re
 import shutil
 
@@ -241,6 +243,7 @@ def om_simulation(pf_list, scenarios, sim_params, n_proc):
             _n_str = omc.sendExpression(f"getParameterValue(linearized_model, \"n\")")
             n = int(_n_str) # dimensions of the system matrix
 
+            start_time = time.time()
             # Extracting 'A' matrix
             _A_str_raw = omc.sendExpression(f"getParameterValue(linearized_model, \"A\")") # output is a string
             _A_str = _A_str_raw.replace(';', ',')
@@ -250,6 +253,10 @@ def om_simulation(pf_list, scenarios, sim_params, n_proc):
 
             # Computing eigenvalues from `A` matrix
             eigs_scenario = sl.eig(A)[0]
+
+            end_time = time.time()
+            print(end_time-start_time)
+
             # Saving eigenvalues
             np.save(os.path.join(_working_directory, f"{_model_package}_eigs_init_{counter}.npy"), eigs_scenario)
 

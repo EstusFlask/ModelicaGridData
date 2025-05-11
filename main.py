@@ -11,7 +11,7 @@ import timeit
 # Importing global constants and variables useful for the execution of the code
 from src import *
 
-LIST_OF_MODELS = ['AVRI', 'IEEE9', 'SevenBus', 'SMIB', 'TwoAreas']
+LIST_OF_MODELS = ['IEEE14', 'IEEE9', 'SevenBus', 'SMIB', 'TwoAreas']
 
 parser = argparse.ArgumentParser()
 parser.add_argument("function", help = HELP_FUNCTION)
@@ -645,7 +645,7 @@ if __name__ == "__main__":
                 if args.sigma:
                     _sigma = args.sigma
                 else:
-                    _sigma = 0.01
+                    _sigma = 0.00
                     print(f"No standard deviation for Gaussian noise in measurements. Assumed sigma = {_sigma}")
 
                 if args.pc:
