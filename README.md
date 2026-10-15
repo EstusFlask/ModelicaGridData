@@ -7,6 +7,12 @@ ModelicaGridData
 
 `ModelicaGridData` allows to generate data using an OpenIPSL phasor-domain simulation model fed with power flow solutions computed using real load data patterns. The simulations are run on a local computer to take advantage of existing computing infrastructure.
 
+## Personal research adaptation
+
+This repository keeps the ModelicaGridData simulation workflow and adds experiment-specific voltage/current extraction and HDF5/MAT conversion scripts. Examples include [`hdf52mat.py`](hdf52mat.py), [`IEEEvoltage.py`](IEEEvoltage.py), [`IEEEcurrent.py`](IEEEcurrent.py), and the SMIB/SevenBus variants. Review hard-coded paths, model names, and sample ranges before use.
+
+本仓库为个人研究修改版，在原有电力系统仿真流程上增加了电压、电流数据提取及 HDF5/MAT 处理脚本。运行前需要按自己的实验修改路径、模型名和样本范围。下方保留原项目安装与工作流说明；历史依赖版本不代表已验证兼容当前环境。
+
 ## Quick Start
 
 - [Installation](docs/guidelines/stepwise_installation.md)
@@ -60,7 +66,7 @@ Then, proceed installing the following dependencies in order:
 
 The OpenIPSL library has to be downloaded separately.
 
-- [OpenIPSL](www.OpenIPSL.com) - Compatible with release 1.5.0 and version 2.0.0 beta (with Dymola). **OpenModelica** (tested with release 1.16.2 on both Linux and Windows) is supported for version 1.5.0 only. A safe copy of the OpenIPSL versions used to develop and test this project is found [here](https://www.dropbox.com/s/kj0ivboxq3a7tet/OpenIPSL_.zip?dl=0).
+- [OpenIPSL](https://github.com/OpenIPSL/OpenIPSL) - Compatible with release 1.5.0 and version 2.0.0 beta (with Dymola). **OpenModelica** (tested with release 1.16.2 on both Linux and Windows) is supported for version 1.5.0 only. A safe copy of the OpenIPSL versions used to develop and test this project is found [here](https://www.dropbox.com/s/kj0ivboxq3a7tet/OpenIPSL_.zip?dl=0).
 
 The installation is summarized in the step-by-step guideline in the [documentation](docs/guidelines/stepwise_installation.md).
 
